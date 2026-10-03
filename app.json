@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Blood Donor Finder",
+    "slug": "blood-donor-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ishani.blooddonorfinder"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.ishani.blooddonorfinder"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "scheme": "blooddonorfinder",
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#C62828"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "de3cdd33-227e-4cf1-abd9-b5817936ec6f"
+      }
+    },
+    "owner": "sliit"
+  }
+}

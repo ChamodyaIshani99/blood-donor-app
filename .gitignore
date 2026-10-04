@@ -40,5 +40,9 @@ yarn-error.*
 /ios
 /android
 
+# firebase
+google-services.json
+GoogleService-Info.plist
+
 # env
 .env

@@ -12,6 +12,7 @@ import { AuthStackParamList } from "../../navigation/types";
 import { getErrorMessage } from "../../utils/errors";
 import { loginSchema, LoginForm } from "../../utils/validation";
 import { colors, spacing } from "../../theme";
+import { Image } from "react-native";
 
 type Props = NativeStackScreenProps<AuthStackParamList, "Login">;
 
@@ -36,7 +37,11 @@ export default function LoginScreen({ navigation }: Props) {
   return (
     <Screen>
       <View style={styles.header}>
-        <Text style={styles.logo}>🩸</Text>
+        <Image
+          source={require("../../../assets/logo.png")}
+          style={styles.logoImage}
+          resizeMode="contain"
+        />
         <Text style={styles.title}>Blood Donor Finder</Text>
         <Text style={styles.subtitle}>Find a donor fast, or help someone in need.</Text>
       </View>
@@ -80,4 +85,9 @@ const styles = StyleSheet.create({
   link: { alignItems: "center", marginTop: spacing.lg },
   linkText: { color: colors.muted, fontSize: 15 },
   linkBold: { color: colors.primary, fontWeight: "600" },
+  logoImage: {
+  width: 100,
+  height: 100,
+  marginBottom: spacing.sm,
+},
 });

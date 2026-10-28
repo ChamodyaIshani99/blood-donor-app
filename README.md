@@ -1,18 +1,44 @@
-# Blood Donor Finder – Mobile App (Expo + React Native + TypeScript)
+# 🩸 Blood Donor Finder – Mobile App (Expo + React Native + TypeScript)
 
-## Run
-1. `npm install`
-2. Copy `.env.example` to `.env` and set `EXPO_PUBLIC_API_URL` (your backend, ending with `/api`)
-   - Real phone: use your PC's local IP, e.g. `http://192.168.1.10:5000/api` (phone and PC on the same Wi-Fi)
-   - Android emulator: `http://10.0.2.2:5000/api`
-3. Start the backend (`npm run dev` in `blood-donor-api`)
-4. `npx expo start` and scan the QR code with Expo Go
-5. If Expo warns about package versions: `npx expo install --fix`
+A production-ready React Native application that connects blood donors with people in need. The app features real-time push notifications, location-based donor matching, and a seamless user experience built with TypeScript and modern React Native tools.
 
-After changing `.env`, restart with `npx expo start -c`.
+## 📱 Download & Try
 
-## Structure
-```
+- **Download APK:** [Latest Release](https://github.com/Chamodyalshani99/blood-donor-app/releases/latest)
+- **Backend API Repo:** [blood-donor-api](https://github.com/Chamodyalshani99/blood-donor-api)
+
+> ⚠️ **Note on Push Notifications:** Remote push notifications **do not work in Expo Go on Android** (SDK 53+). To test push notifications, you must build a **Development Build** or install the production APK on a physical Android device. Everything else works perfectly in Expo Go.
+
+---
+
+## ✨ Key Features
+
+- 🔐 **Secure Authentication:** JWT-based login/register with token storage in `SecureStore`.
+- 🔔 **Real-time Push Notifications:** Instant alerts for matching blood requests based on blood group and district.
+- 🩸 **Smart Donor Search:** Filter donors by blood group, district, and area.
+- 📋 **Blood Request Management:** Create, view, edit, and fulfill blood requests.
+- 📞 **Direct Calling:** Call donors directly from the app.
+- 🟢 **Availability Toggle:** Donors can easily toggle their visibility.
+- 📅 **Donation Cooldown:** Automatically hides donors who have donated within the last 90 days.
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework:** [React Native](https://reactnative.dev/) + [Expo](https://expo.dev/)
+- **Language:** TypeScript
+- **Navigation:** React Navigation (AuthStack & MainTabs)
+- **State Management & Data Fetching:** [React Query (TanStack)](https://tanstack.com/query)
+- **Forms & Validation:** React Hook Form + [Zod](https://zod.dev/)
+- **Push Notifications:** Expo Notifications + Firebase Cloud Messaging (FCM V1)
+- **HTTP Client:** Axios
+- **Storage:** Expo SecureStore
+
+---
+
+## 📂 Project Structure
+
+```text
 App.tsx                      providers (SafeArea, React Query, Auth) + navigator
 src/
   api/client.ts              axios instance, token header, auto-logout on 401
@@ -26,23 +52,4 @@ src/
   hooks/                     useDonors (infinite query), useDebounce
   utils/validation.ts        zod schemas (same rules as the API)
   utils/errors.ts            turns API/network errors into readable messages
-```
-
-## Push notifications (needs a development build)
-Remote push does **not** work in Expo Go on Android (SDK 53+). Everything else works in Expo Go.
-To test push you need a development build on a real phone:
-
-```bash
-npm install -g eas-cli
-eas login
-eas init                                   # writes extra.eas.projectId into app.json
-eas build --profile development --platform android
-```
-Android also needs Firebase (FCM) credentials: follow
-https://docs.expo.dev/push-notifications/push-notifications-setup/ (add `google-services.json`, upload the FCM key to EAS).
-Install the built app on your phone, then run `npx expo start --dev-client`.
-
-Package name is `com.ishani.blooddonorfinder` (app.json). Change it before your first build if you want another one.
-
-Flow: login -> permission prompt -> Expo push token -> `POST /api/users/me/push-token`.
-Tapping a notification opens that request (`data.requestId`). Logout removes the token from the server.
+  notifications/             push.ts (setup), useNotifications.ts (handlers)

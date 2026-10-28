@@ -4,8 +4,8 @@ A production-ready React Native application that connects blood donors with peop
 
 ## 📱 Download & Try
 
-- **Download APK:** [Latest Release](https://github.com/Chamodyalshani99/blood-donor-app/releases/latest)
-- **Backend API Repo:** [blood-donor-api](https://github.com/Chamodyalshani99/blood-donor-api)
+- **Download APK:** [Latest Release](https://github.com/ChamodyaIshani99/blood-donor-app/releases/tag/v1.0.0)
+- **Backend API Repo:** [blood-donor-api](https://github.com/ChamodyaIshani99/blood-donor-api)
 
 > ⚠️ **Note on Push Notifications:** Remote push notifications **do not work in Expo Go on Android** (SDK 53+). To test push notifications, you must build a **Development Build** or install the production APK on a physical Android device. Everything else works perfectly in Expo Go.
 
